@@ -13,17 +13,17 @@ def generate_audio(categories):
     for category in categories.values():
         for term in category["terms"]:
             filename = term["simplified"] + ".m4a"
-            if not os.path.isfile(filename):
+            if not os.path.isfile("audio/" + filename):
                 os.system("say -v Ting-Ting -o 'audio/%s' %s" % (filename, term["simplified"]))
 
 def markdown(categories):
-    result = ["# Vocabulaire du _taiji quan_"]
+    result = ["# Vocabulaire du _taiji quan_\n"]
     for category in categories.values():
-        result.append("## " + category["french"])
-        result.append("Chinois simplifié | Prononciation | Français")
-        result.append("|".join(["---"] * 3))
+        result.append("## %s\n" % category["french"])
+        result.append("| Chinois simplifié | Prononciation | Français |")
+        result.append("|%s|" % ("|".join(["-----"] * 3)))
         for term in category["terms"]:
-            result.append("{simplified} | [{pinyin}](https://raw.githubusercontent.com/laowantong/taijiquan/audio/{simplified}.mp4) | {french}".format(**term))
+            result.append("| %s |" % ("{simplified} | [{pinyin}](https://raw.githubusercontent.com/laowantong/taijiquan/audio/{simplified}.mp4) | {french}".format(**term)))
     return "\n".join(result)
 
 if __name__ == "__main__":
