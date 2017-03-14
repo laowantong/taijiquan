@@ -1,0 +1,60 @@
+{
+  "terms": [
+    {
+      "simplified": "掤",
+      "pinyin": "péng",
+      "french": "parer",
+      "categories": ["bamen"]
+    },
+    {
+      "simplified": "捋",
+      "french": "tirer",
+      "pinyin": "lǚ",
+      "categories": ["bamen"]
+    },
+    {
+      "simplified": "挤",
+      "french": "presser",
+      "pinyin": "jǐ",
+      "categories": ["bamen"]
+    },
+    {
+      "simplified": "按",
+      "french": "appuyer",
+      "pinyin": "àn",
+      "categories": ["bamen"]
+    },
+    {
+      "simplified": "采",
+      "french": "cueillir",
+      "pinyin": "cǎi",
+      "categories": ["bamen"]
+    },
+    {
+      "simplified": "挒",
+      "french": "séparer",
+      "pinyin": "liè",
+      "categories": ["bamen"]
+    },
+    {
+      "simplified": "肘",
+      "french": "donner un coup de coude",
+      "pinyin": "zhǒu",
+      "categories": ["bamen"]
+    },
+    {
+      "simplified": "靠",
+      "french": "heurter",
+      "pinyin": "kào",
+      "categories": ["bamen"]
+    }    
+  ],
+  "categories": [
+    {
+      "id": "bamen",
+      "simplified": "把门",
+      "french": "Les huit portes"
+    }
+  ]
+}
+
