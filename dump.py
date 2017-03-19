@@ -36,9 +36,11 @@ def create_categories(filename):
 def generate_audio(categories):
     for category in categories.values():
         for term in category["terms"]:
-            filename = term["simplified"] + ".m4a"
-            if not os.path.isfile("audio/" + filename):
-                os.system("say -v Ting-Ting -o 'audio/%s' %s" % (filename, term["simplified"]))
+            term["filename"] = term["simplified"] + ".m4a"
+            if not os.path.isfile("audio/{filename}".format(**term)):
+                if "correct_pronunciation" not in term:
+                    term["correct_pronunciation"] = term["simplified"]
+                os.system("say -v Ting-Ting -o 'audio/{filename}' {correct_pronunciation}".format(**term))
 
 def html(categories):
     result = []
