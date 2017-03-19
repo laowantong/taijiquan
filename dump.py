@@ -17,7 +17,7 @@ HEADER_TEMPLATE = """\
 ROW_TEMPLATE = """\
         <tr>
             <td>{simplified}</td>
-            <td><a href="audio/{simplified}.m4a">{pinyin}</a></td>
+            <td>{pinyin}</td>
             <td><audio controls><source src="audio/{simplified}.m4a"></audio></td>
             <td>{french}</td>
         </tr>"""
