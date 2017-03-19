@@ -7,6 +7,7 @@ HEADER_TEMPLATE = """\
     <thead>
         <tr>
             <th>Chinois simplifié</th>
+            <th>Pinyin</th>
             <th>Prononciation</th>
             <th>Français</th>
         </tr>
@@ -16,12 +17,8 @@ HEADER_TEMPLATE = """\
 ROW_TEMPLATE = """\
         <tr>
             <td>{simplified}</td>
-            <td>
-                <audio controls>
-                    <source src="audio/{simplified}.m4a">
-                </audio>
-                <a href="audio/{simplified}.m4a">{pinyin}</a>
-            </td>
+            <td><a href="audio/{simplified}.m4a">{pinyin}</a></td>
+            <td><audio controls><source src="audio/{simplified}.m4a"></audio></td>
             <td>{french}</td>
         </tr>"""
 
