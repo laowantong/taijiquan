@@ -23,7 +23,7 @@ def markdown(categories):
         result.append("| Chinois simplifié | Prononciation | Français |")
         result.append("|%s|" % ("|".join(["-----"] * 3)))
         for term in category["terms"]:
-            result.append("| %s |" % ("{simplified} | [{pinyin}](https://raw.githubusercontent.com/laowantong/taijiquan/audio/{simplified}.mp4) | {french}".format(**term)))
+            result.append("| %s |" % ("{simplified} | [{pinyin}](https://raw.githubusercontent.com/laowantong/taijiquan/master/audio/{simplified}.m4a) | {french}".format(**term)))
     return "\n".join(result)
 
 if __name__ == "__main__":
