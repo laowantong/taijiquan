@@ -1,6 +1,30 @@
 import json, os
 from collections import OrderedDict
 
+HEADER_TEMPLATE = """\
+<h2>{french}</h2>\n
+<table>
+    <thead>
+        <tr>
+            <th>Chinois simplifié</th>
+            <th>Prononciation</th>
+            <th>Français</th>
+        </tr>
+    </thead>
+    <tbody>"""
+
+ROW_TEMPLATE = """\
+        <tr>
+            <td>{simplified}</td>
+            <td>
+                <audio controls>
+                    <source src="audio/{simplified}.m4a">
+                </audio>
+                <a href="audio/{simplified}.m4a">{pinyin}</a>
+            </td>
+            <td>{french}</td>
+        </tr>"""
+
 def create_categories(filename):
     db = json.loads(open(filename).read())
     categories = OrderedDict((category["id"], category) for category in db["categories"])
@@ -18,32 +42,10 @@ def generate_audio(categories):
 
 def html(categories):
     result = []
-
     for category in categories.values():
-        result.append('<h2>%s</h2>\n' % category["french"])
-        result.append('<table>')
-        result.append('    <thead>')
-        result.append('        <tr>')
-        result.append('            <th>Chinous simplifié</th>')
-        result.append('            <th>Prononciation</th>')
-        result.append('            <th>Français</th>')
-        result.append('        </tr>')
-        result.append('    </thead>')
-        result.append('    <tbody>')
-
+        result.append(HEADER_TEMPLATE.format(**category))
         for term in category["terms"]:
-            result.append('        <tr>')
-            result.append('            <td>{simplified}</td>'.format(**term))
-            result.append('            <td>')
-            result.append('                <a href="audio/{simplified}.m4a">{pinyin}</a>'.format(**term))
-            result.append('                <br/>')
-            result.append('                <audio controls>')
-            result.append('                    <source src="audio/{simplified}.m4a">'.format(**term))
-            result.append('                </audio>')
-            result.append('            </td>')
-            result.append('            <td>{french}</td>'.format(**term))
-            result.append('        </tr>')
-
+            result.append(ROW_TEMPLATE.format(**term))
         result.append('    </tbody>')
         result.append('</table>')
     return "\n".join(result)
