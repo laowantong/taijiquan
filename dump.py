@@ -16,19 +16,48 @@ def generate_audio(categories):
             if not os.path.isfile("audio/" + filename):
                 os.system("say -v Ting-Ting -o 'audio/%s' %s" % (filename, term["simplified"]))
 
-def markdown(categories):
-    result = ["# Vocabulaire du _taiji quan_\n"]
+def html(categories):
+    result = []
+
     for category in categories.values():
-        result.append("## %s\n" % category["french"])
-        result.append("| Chinois simplifié | Prononciation | Français |")
-        result.append("|%s|" % ("|".join(["-----"] * 3)))
+        result.append('<h2>%s</h2>\n' % category["french"])
+        result.append('<table>')
+        result.append('    <thead>')
+        result.append('        <tr>')
+        result.append('            <th>Chinous simplifié</th>')
+        result.append('            <th>Prononciation</th>')
+        result.append('            <th>Français</th>')
+        result.append('        </tr>')
+        result.append('    </thead>')
+        result.append('    <tbody>')
+
         for term in category["terms"]:
-            result.append("| %s |" % ("{simplified} | [{pinyin}](https://raw.githubusercontent.com/laowantong/taijiquan/master/audio/{simplified}.m4a) | {french}".format(**term)))
+            result.append('        <tr>')
+            result.append('            <td>{simplified}</td>'.format(**term))
+            result.append('            <td>')
+            result.append('                <a href="audio/{simplified}.m4a">{pinyin}</a>'.format(**term))
+            result.append('                <br/>')
+            result.append('                <audio controls>')
+            result.append('                    <source src="audio/{simplified}.m4a">'.format(**term))
+            result.append('                </audio>')
+            result.append('            </td>')
+            result.append('            <td>{french}</td>'.format(**term))
+            result.append('        </tr>')
+
+        result.append('    </tbody>')
+        result.append('</table>')
+    return "\n".join(result)
+
+def markdown():
+    result = ["# Vocabulaire du _taiji quan_\n"]
+    result.append("{% include vocabulary.html %}")
+    
     return "\n".join(result)
 
 if __name__ == "__main__":
     categories = create_categories("lexicon.json")
     generate_audio(categories)
-    open("README.md", "w").write(markdown(categories))
+    open("_includes/vocabulary.html", "w").write(html(categories))
+    open("README.md", "w").write(markdown())
     
     
