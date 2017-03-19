@@ -48,13 +48,42 @@
       "french": "heurter",
       "pinyin": "kào",
       "categories": ["bamen"]
-    }    
+    },
+    {
+      "simplified": "太极拳",
+      "french": "—",
+      "pinyin": "tàijíquán",
+      "categories": ["TODO"]
+    },
+    {
+      "simplified": "推手",
+      "french": "pousser les mains",
+      "pinyin": "tuīshǒu",
+      "categories": ["TODO"]
+    },
+    {
+      "simplified": "丹田",
+      "french": "champ du cinabre",
+      "pinyin": "dāntián",
+      "categories": ["TODO"]
+    },
+    {
+      "simplified": "气",
+      "french": "souffle",
+      "pinyin": "qì",
+      "categories": ["TODO"]
+    }
   ],
   "categories": [
     {
       "id": "bamen",
       "simplified": "把门",
       "french": "Les huit portes"
+    },
+    {
+      "id": "TODO",
+      "simplified": "",
+      "french": "À classer"
     }
   ]
 }
