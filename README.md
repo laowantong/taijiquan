@@ -1,3 +1,3 @@
-# Glossaire du _taiji quan_
+# Vocabulaire du _taiji quan_
 
 {% include vocabulary.html %}
