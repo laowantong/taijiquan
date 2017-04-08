@@ -1,8 +1,8 @@
-import json, os
+import re, os
 from collections import OrderedDict
 
 HEADER_TEMPLATE = """\
-<h2>{french}</h2>\n
+<h2>{}</h2>
 <table>
     <thead>
         <tr>
@@ -22,54 +22,41 @@ ROW_TEMPLATE = """\
             <td>{french}</td>
         </tr>"""
 
-def create_categories(filename):
-    db = json.loads(open(filename).read())
-    categories = OrderedDict((category["id"], category) for category in db["categories"])
-    for term in db["terms"]:
-        for category in term["categories"]:
-            categories[category]["terms"] = categories[category].get("terms", []) + [term]
-    return categories
+def read_db(filename):
+    result = OrderedDict()
+    (header, rows) = open(filename).read().split("\n", 1)
+    for match in re.finditer(r"(.+?)\t(.+?)(?:\{(.+?)\})?\t(.+?)\t(.*)", rows):
+        (pinyin, simplified, reading, french, category) = match.groups()
+        if category not in result:
+            result[category] = []
+        result[category].append({
+            "pinyin": pinyin,
+            "simplified": simplified,
+            "reading": reading if reading else simplified,
+            "french": french,
+            "category": category
+        })
+    return result
 
-def generate_audio(categories):
-    for category in categories.values():
-        for term in category["terms"]:
+def generate_audio(data):
+    for terms in data.values():
+        for term in terms:
             term["filename"] = term["simplified"] + ".m4a"
             if not os.path.isfile("audio/{filename}".format(**term)):
-                if "correct_pronunciation" not in term:
-                    term["correct_pronunciation"] = term["simplified"]
-                os.system("say -v Ting-Ting -o 'audio/{filename}' {correct_pronunciation}".format(**term))
+                os.system("say -v Ting-Ting -o 'audio/{filename}' {reading}".format(**term))
 
-def html(categories):
+def html(data):
     result = []
-    for category in categories.values():
-        result.append(HEADER_TEMPLATE.format(**category))
-        for term in category["terms"]:
+    for (category, terms) in data.items():
+        result.append(HEADER_TEMPLATE.format(category))
+        for term in terms:
             result.append(ROW_TEMPLATE.format(**term))
         result.append('    </tbody>')
         result.append('</table>')
     return "\n".join(result)
 
-def markdown():
-    result = ["# Vocabulaire du _taiji quan_\n"]
-    result.append("{% include vocabulary.html %}")
-    return "\n".join(result)
-
-def flashcards_deluxe(categories):
-    result = ["\t".join(["Text 1", "Text 2", "Text 3", "Category 1"])]
-    for category in categories.values():
-        for term in category["terms"]:
-            row = []
-            row.append(term["pinyin"])
-            row.append(term["simplified"] + "{{{}}}".format(term.get("correct_pronunciation", "")).replace("{}", ""))
-            row.append(term["french"])
-            row.append(category["id"])
-            result.append("\t".join(row))
-    return "\n".join(result)
 
 if __name__ == "__main__":
-    categories = create_categories("lexicon.json")
-    generate_audio(categories)
-    open("lexicon.tsv", "w").write(flashcards_deluxe(categories))
-    # open(os.path.expanduser("~/Dropbox/Flashcards Deluxe/taiji.txt"), "w").write(flashcards_deluxe(categories))
-    open("_includes/vocabulary.html", "w").write(html(categories))
-    open("README.md", "w").write(markdown())
+    data = read_db("lexicon.tsv")
+    generate_audio(data)
+    open("_includes/vocabulary.html", "w").write(html(data))
