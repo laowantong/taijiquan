@@ -60,7 +60,7 @@ def flashcards_deluxe(categories):
         for term in category["terms"]:
             row = []
             row.append(term["pinyin"])
-            row.append(term["simplified"] + "{{}}".format(term.get("correct_pronunciation", "")).replace("{}", ""))
+            row.append(term["simplified"] + "{{{}}}".format(term.get("correct_pronunciation", "")).replace("{}", ""))
             row.append(term["french"])
             row.append(category["id"])
             result.append("\t".join(row))
