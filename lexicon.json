@@ -5,72 +5,114 @@
       "correct_pronunciation": "朋",
       "pinyin": "péng",
       "french": "parer",
-      "categories": ["bamen"]
+      "categories": ["Les huit portes"]
     },
     {
       "simplified": "捋",
       "french": "tirer",
       "pinyin": "lǚ",
-      "categories": ["bamen"]
+      "categories": ["Les huit portes"]
     },
     {
       "simplified": "挤",
       "french": "presser",
       "pinyin": "jǐ",
-      "categories": ["bamen"]
+      "categories": ["Les huit portes"]
     },
     {
       "simplified": "按",
       "french": "appuyer",
       "pinyin": "àn",
-      "categories": ["bamen"]
+      "categories": ["Les huit portes"]
     },
     {
       "simplified": "采",
       "french": "cueillir",
       "pinyin": "cǎi",
-      "categories": ["bamen"]
+      "categories": ["Les huit portes"]
     },
     {
       "simplified": "挒",
       "french": "séparer",
       "pinyin": "liè",
-      "categories": ["bamen"]
+      "categories": ["Les huit portes"]
     },
     {
       "simplified": "肘",
       "french": "donner un coup de coude",
       "pinyin": "zhǒu",
-      "categories": ["bamen"]
+      "categories": ["Les huit portes"]
+    },
+    {
+    "pinyin": "bǎi huì",
+    "simplified": "百会",
+    "french": "cent + réunion",
+    "categories": ["Points d'acupuncture"]
+    },
+    {
+    "pinyin": "dà bāo ",
+    "simplified": "大包",
+    "french": "grand + enveloppe",
+    "categories": ["Points d'acupuncture"]
+    },
+    {
+    "pinyin": "huì yīn ",
+    "simplified": "会阴",
+    "french": "réunion + yin",
+    "categories": ["Points d'acupuncture"]
+    },
+    {
+    "pinyin": "láo gōng ",
+    "simplified": "劳宫",
+    "french": "labeur + palais",
+    "categories": ["Points d'acupuncture"]
+    },
+    {
+    "pinyin": "mìng mén ",
+    "simplified": "命门",
+    "french": "vie + porte",
+    "categories": ["Points d'acupuncture"]
+    },
+    {
+    "pinyin": "yìn táng ",
+    "simplified": "印堂",
+    "french": "impression + hall",
+    "categories": ["Points d'acupuncture"]
+    },
+    {
+    "pinyin": "yǒng quán ",
+    "simplified": "涌泉",
+    "french": "jaillir + source",
+    "categories": ["Points d'acupuncture"]
+    },
+    {
+    "pinyin": "yù zhěn ",
+    "simplified": "玉枕",
+    "french": "jade + oreiller",
+    "categories": ["Points d'acupuncture"]
     },
     {
       "simplified": "靠",
       "french": "heurter",
       "pinyin": "kào",
-      "categories": ["bamen"]
+      "categories": ["Les huit portes"]
     },
     {
       "simplified": "太极拳",
-      "french": "—",
+      "french": "suprême + faîte + boxe",
       "pinyin": "tàijíquán",
       "categories": ["TODO"]
     },
     {
       "simplified": "推手",
-      "french": "pousser les mains",
+      "french": "pousser + main",
       "pinyin": "tuīshǒu",
       "categories": ["TODO"]
     },
     {
       "simplified": "丹田",
-      "french": "champ du cinabre",
+      "french": "cinabre + champ",
       "pinyin": "dāntián",
-      "categories": ["TODO"]
-    },
-    {
-      "simplified": "命门",
-      "french": "porte de la vie",
-      "pinyin": "mìngmén",
       "categories": ["TODO"]
     },
     {
@@ -78,13 +120,60 @@
       "french": "souffle",
       "pinyin": "qì",
       "categories": ["TODO"]
+    },
+
+    {
+    "pinyin": "mǎ bù",
+    "simplified": "马步",
+    "french": "cheval + pas",
+    "categories": ["Positions de base"]
+    },
+    {
+    "pinyin": "gōng bù",
+    "simplified": "弓步",
+    "french": "arc + pas",
+    "categories": ["Positions de base"]
+    },
+    {
+    "pinyin": "xiē bù",
+    "simplified": "歇步",
+    "french": "repos + pas",
+    "categories": ["Positions de base"]
+    },
+    {
+    "pinyin": "pú bù",
+    "simplified": "仆步",
+    "french": "s'écrouler + pas",
+    "categories": ["Positions de base"]
+    },
+    {
+    "pinyin": "xū bù",
+    "simplified": "虚步",
+    "french": "vide + pas",
+    "categories": ["Positions de base"]
+    },
+    {
+    "pinyin": "dīng bù",
+    "simplified": "丁步",
+    "french": "[forme de 丁] + pas",
+    "categories": ["Positions de base"]
     }
   ],
   "categories": [
     {
-      "id": "bamen",
+      "id": "Les huit portes",
       "simplified": "把门",
       "french": "Les huit portes"
+    },
+    {
+      "id": "Points d'acupuncture",
+      "simplified": "穴",
+      "french": "Points d'acupuncture"
+    },
+    {
+      "id": "Positions de base",
+      "simplified": "",
+      "french": "Positions de base"
     },
     {
       "id": "TODO",
@@ -93,4 +182,5 @@
     }
   ]
 }
+
 

@@ -52,13 +52,24 @@ def html(categories):
 def markdown():
     result = ["# Vocabulaire du _taiji quan_\n"]
     result.append("{% include vocabulary.html %}")
-    
+    return "\n".join(result)
+
+def flashcards_deluxe(categories):
+    result = ["\t".join(["Text 1", "Text 2", "Text 3", "Category 1"])]
+    for category in categories.values():
+        for term in category["terms"]:
+            row = []
+            row.append(term["pinyin"])
+            row.append(term["simplified"] + "{{}}".format(term.get("correct_pronunciation", "")).replace("{}", ""))
+            row.append(term["french"])
+            row.append(category["id"])
+            result.append("\t".join(row))
     return "\n".join(result)
 
 if __name__ == "__main__":
     categories = create_categories("lexicon.json")
     generate_audio(categories)
+    open("lexicon.tsv", "w").write(flashcards_deluxe(categories))
+    # open(os.path.expanduser("~/Dropbox/Flashcards Deluxe/taiji.txt"), "w").write(flashcards_deluxe(categories))
     open("_includes/vocabulary.html", "w").write(html(categories))
     open("README.md", "w").write(markdown())
-    
-    
