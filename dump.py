@@ -6,10 +6,10 @@ HEADER_TEMPLATE = """\
 <table>
     <thead>
         <tr>
-            <th>Chinois simplifié</th>
+            <th>Chinois</th>
             <th>Pinyin</th>
             <th>Prononciation</th>
-            <th>Français</th>
+            <th>Littéralement</th>
         </tr>
     </thead>
     <tbody>"""
