@@ -45,6 +45,12 @@ def generate_audio(data):
             if not os.path.isfile("audio/{filename}".format(**term)):
                 os.system("say -v Ting-Ting -o 'audio/{filename}' {reading}".format(**term))
 
+def cleanup_obsolete_audio(data):
+    audio = set(term["filename"] for terms in data.values() for term in terms)
+    obsolete_audio = [filename for filename in os.listdir("audio") if filename.endswith("m4a") and filename not in audio]
+    for filename in obsolete_audio:
+        os.remove("audio/" + filename)
+    
 def html(data):
     result = []
     for (category, terms) in data.items():
@@ -59,4 +65,5 @@ def html(data):
 if __name__ == "__main__":
     data = read_db("lexicon.tsv")
     generate_audio(data)
+    cleanup_obsolete_audio(data)
     open("_includes/vocabulary.html", "w").write(html(data))
